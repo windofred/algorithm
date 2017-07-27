@@ -42,5 +42,4 @@ public class TwoNumberOfSumIsS {
 		System.out.println(num2);
 		return found;
 	}
-	
 }
