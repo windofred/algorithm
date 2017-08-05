@@ -13,12 +13,12 @@ import org.junit.Test;
  *
  */
 
-class TreeNode {
+class TreeNode2 {
 	int value;
-	TreeNode left;
-	TreeNode right;
+	TreeNode2 left;
+	TreeNode2 right;
 
-	TreeNode(int value) {
+	TreeNode2(int value) {
 		this.value = value;
 	}
 }
@@ -30,11 +30,11 @@ public class Problem6 {
 		int[] pre = { 1, 2, 4, 7, 3, 5, 6, 8 };
 		int[] in = { 4, 7, 2, 1, 5, 3, 8, 6 };
 		// 重建树的根节点
-		TreeNode node = reConstructBinaryTree(pre, in);
+		TreeNode2 node = reConstructBinaryTree(pre, in);
 		System.out.println(node.right.value);
 	}
 
-	public TreeNode reConstructBinaryTree(int[] pre, int[] in) {
+	public TreeNode2 reConstructBinaryTree(int[] pre, int[] in) {
 		if (pre == null || in == null || pre.length != in.length || pre.length < 1) {
 			return null;
 		}	
@@ -51,7 +51,7 @@ public class Problem6 {
 	 * @param ie 中序终止位置
 	 * @return
 	 */
-	private TreeNode construct(int[] pre, int ps, int pe, int[] in, int is, int ie) {
+	private TreeNode2 construct(int[] pre, int ps, int pe, int[] in, int is, int ie) {
 		if (ps > pe) {
 			return null;
 		}
@@ -67,7 +67,7 @@ public class Problem6 {
 			throw new RuntimeException("invalid input" + index);
 		}
 		// 构建重建二叉树的根结点
-		TreeNode node = new TreeNode(0);
+		TreeNode2 node = new TreeNode2(0);
 		node.value = value;
 		// 递归重建左子树和右子树
 		// 前序序列的左子树：2 4 7(ps + 1, ps + index -is)
