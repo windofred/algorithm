@@ -41,6 +41,7 @@ public class Problem14 {
 			return 2;
 		}
 		
+		// 存储子问题的最优解
 		int[] f = new int[length + 1];
 		f[0] = 0;
 		f[1] = 1;

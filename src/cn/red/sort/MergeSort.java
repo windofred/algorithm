@@ -44,7 +44,7 @@ public class MergeSort {
 			mergeSort(a, start, mid);
 			mergeSort(a, mid + 1, end);
 			merge(a, start, mid, end);
-			System.out.println(Arrays.toString(a));
+			//System.out.println(Arrays.toString(a));
 		}
 	}
 

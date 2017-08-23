@@ -2,6 +2,8 @@ package cn.red.sort;
 
 /**
  * 
+ * 二分查找(重要)
+ * 
  * 树的基本术语：
  *     结点的度：结点拥有的字树的数目
  *     叶子：度为零的结点
@@ -17,8 +19,8 @@ package cn.red.sort;
  * 二叉树的性质：
  *    性质1：二叉树第i层上的结点数目最多为：2{i - 1}(i >= 1)
  *    性质2：深度为k的二叉树至多有2{k} - 1个结点(k >= 1)
- *    性质3：包含n个结点的二叉树的高度至少为log2(n + 1)
- *    性质4：在任意一棵二叉树中，若终端结点的个数为n0，度为2的结点树为n2，则n0 = n2 + 1
+ *    性质3：包含n个结点的二叉树的高度至少为log2(n + 1) == lg(n + 1)【完全二叉树】
+ *    性质4：在任意一棵二叉树中，若终端结点的个数为n0，度为2的结点的个数为n2，则n0 = n2 + 1
  *    
  * 满二叉树：高度为h，并且由2{h} - 1个结点的二叉树，被称为满二叉树
  * 完全二叉树
@@ -38,27 +40,34 @@ public class BinarySearchTree {
 	public static void main(String[] args) {
 		int[] array = {10, 20, 30, 40, 50, 60, 70};
 		BinarySearchTree bst = new BinarySearchTree();
-		int search = bst.binarySearch(array, 50);
-		System.out.println("50所在的位置是：" + search);
+		int search = bst.binarySearch(array, 70);
+		System.out.println("所在的位置是：" + search);
 	}
 	
+	/**
+	 * 
+	 * @param array 数组
+	 * @param key 要查找的数
+	 * @return
+	 */
 	public int binarySearch(int[] array, int key) {
 		
-		int left = 0;
-		int right = array.length - 1;
+		int left = 0;// 指向第一个元素
+		int right = array.length - 1;// 指向最后一个元素
 		
 		while (left <= right) {
 			int middle = (left + right) / 2;
+			// 找到要查找的值
 			if (array[middle] == key) {
 				return middle;
-			} else if (array[middle] > key) {
+			} else if (array[middle] > key) {// 中间值大于要查找的值，则到中间值左边去找
 				right = middle - 1;
 			} else {
-				left = middle + 1;
+				left = middle + 1;// 中间值小于要查找的值，则到中间值右边去找
 			}
 		}
 		
-		return -1;
+		return 0;
 	}
 	
 }

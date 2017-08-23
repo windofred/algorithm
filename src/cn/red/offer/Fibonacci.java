@@ -1,5 +1,10 @@
 package cn.red.offer;
 
+/**
+ * 斐波那契数列
+ * @author red
+ *
+ */
 public class Fibonacci {
 	
 	public static void main(String[] args) {

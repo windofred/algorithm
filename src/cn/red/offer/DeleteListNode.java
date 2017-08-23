@@ -1,50 +1,78 @@
 package cn.red.offer;
 
 class ListNode {
-	int data;
-	ListNode next;
+	int val;
+	ListNode next = null;
+
+	ListNode(int val) {
+		this.val = val;
+	}
 }
 
+/**
+ * 删除链表节点
+ * 
+ * @author red
+ *
+ */
 public class DeleteListNode {
-	
+
 	public static void main(String[] args) {
-		ListNode head = new ListNode();
-		ListNode second = new ListNode();
-		ListNode third = new ListNode();
-		
-		head.next = second;
-		second.next = third;
-		
-		head.data = 1;
-		second.data = 2;
-		third.data = 3;
-		
-		DeleteListNode dln = new DeleteListNode();
-		dln.deleteNode(head, second);
-		System.out.println(second.next.data);
+
 	}
-	
-	public void deleteNode(ListNode head, ListNode deListNode) {
-		if(deListNode == null || head == null){
-			return ;
+
+	public ListNode deleteDuplication(ListNode pHead) {
+		if (pHead == null || pHead.next == null) {
+			return pHead;
 		}
-		if(head == deListNode){
-			head =null;
-		}
-		else{
-			if(deListNode.next == null){
-				ListNode pinitListNode = head;
-				while(pinitListNode.next.next != null){
-					pinitListNode = pinitListNode.next;
-				}
-				pinitListNode.next = null;
-			}else{
-				deListNode.data = deListNode.next.data;
-				deListNode.next = deListNode.next.next;
+		
+		ListNode pPreNode = null;
+		ListNode pNode = pHead;
+		
+		while (pNode != null) {
+			ListNode pNext = pNode.next;
+			boolean needDelete = false;
+			if (pNext != null && pNext.val == pNode.val) {
+				needDelete = true;
 			}
+			
+			if (!needDelete) {
+				pPreNode = pNode;
+				pNode = pNode.next;
+			} else {
+				int value = pNode.val;
+				ListNode pToBeDel = pNode;
+				
+			}
+			
+			
 		}
 		
-		
+		return pHead;
 	}
-	
+
+	/*
+	 * public static void main(String[] args) { ListNode head = new ListNode(1);
+	 * ListNode second = new ListNode(2); ListNode third = new ListNode(3);
+	 * 
+	 * head.next = second; second.next = third; third.next = null;
+	 * 
+	 * DeleteListNode dln = new DeleteListNode(); dln.deleteNode(head, third);
+	 * System.out.println(head.next.val); }
+	 * 
+	 * public void deleteNode(ListNode head, ListNode deListNode) {
+	 * 
+	 * if (head == null || deListNode == null) { return; }
+	 * 
+	 * // 链表中不止一个节点，删除的不是尾节点（即删除的节点都存在后继节点） if (deListNode.next != null) {
+	 * ListNode nextNode = deListNode.next; deListNode.val = nextNode.val;
+	 * deListNode.next = nextNode.next; } else if (deListNode == head) {//
+	 * 链表中只有一个节点（删除的既是头节点，也是尾节点） head = head.next; deListNode = null; } else {//
+	 * 链表中不止一个节点，删除的是尾节点（即删除的节点不存在后继节点） ListNode node = head; while (node.next
+	 * != deListNode) { node = node.next; } node.next = null; deListNode = null;
+	 * }
+	 * 
+	 * }
+	 */
+
 }

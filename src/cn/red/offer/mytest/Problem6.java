@@ -31,7 +31,7 @@ public class Problem6 {
 		int[] in = { 4, 7, 2, 1, 5, 3, 8, 6 };
 		// 重建树的根节点
 		TreeNode2 node = reConstructBinaryTree(pre, in);
-		System.out.println(node.right.value);
+		System.out.println(node.value);
 	}
 
 	public TreeNode2 reConstructBinaryTree(int[] pre, int[] in) {
