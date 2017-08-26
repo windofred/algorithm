@@ -21,7 +21,7 @@ public class VerifyPostOrderOfBST {
 	}
 
 	public boolean VerifySquenceOfBST(int[] sequence) {
-		if (sequence == null || sequence.length == 0) {
+		if (sequence == null || sequence.length <= 0) {
 			return false;
 		}
 		int length = sequence.length;

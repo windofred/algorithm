@@ -52,6 +52,7 @@ public class HeapSort {
 	// 堆排序(从小到大)
 	public static void heapSortAsc(int[] arr, int n) {
 		int i, tmp;
+		// 从(n / 2 - 1)-->0逐次遍历。遍历之后，得到的数组实际上是一个最大堆
 		for (i = n / 2 - 1; i >= 0; i--) {
 			maxHeapDown(arr, i, n - 1);
 		}
