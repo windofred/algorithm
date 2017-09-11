@@ -8,16 +8,6 @@ import java.util.Arrays;
  *
  */
 
-class BinaryTreeNode {
-	int val;
-	BinaryTreeNode left = null;
-	BinaryTreeNode right = null;
-	
-	public BinaryTreeNode(int val) {
-		this.val = val;
-	}
-}
-
 public class Problem7 {
 	
 	public static void main(String[] args) {
