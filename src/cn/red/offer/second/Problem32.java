@@ -59,6 +59,9 @@ public class Problem32 {
 		if (root == null) {
 			return null;
 		}
+		
+		BinaryTreeNode pNode = root;
+		
 		// 保存节点的值
 		ArrayList<Integer> list = new ArrayList<Integer>();
 		// 保存放入队列的节点
@@ -68,14 +71,25 @@ public class Problem32 {
 		node.add(root);
 		
 		while (node.size() != 0) {
+			pNode = root;
 			root = node.poll();
+			// 如果当前节点的左子节点不为空
 			if (root.left != null) {
+				// 将当前节点的左子节点添加到集合list中
 				list.add(root.left.val);
+				// 如果该节点有子节点，则把子节点放入到队列的末尾
 				node.add(root.left);
+				// next指向同层的下一个节点
+				pNode.left.next = pNode.right;
 			}
+			// 如果当前节点的右子节点不为空
 			if (root.right != null) {
+				// 将当前节点的右子节点添加到集合list中
 				list.add(root.right.val);
+				// 如果该节点有子节点，则把子节点放入到队列的末尾
 				node.add(root.right);
+				// next指向同层的下一个节点
+				pNode.right.next = pNode.right;
 			}
 		}
 		
