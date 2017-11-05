@@ -51,40 +51,43 @@ public class QuickSort {
 	}
 	
 	// left可以理解为当前数组的头指针
-	// right可以理解为当前数组的尾指针
-	public void quickSort(int[] array, int left, int right) {
-		if (array == null || array.length <= 0) {
-			return;
-		}
-		
-		if (left < right) {
-			int i = left;
-			int j = right;
-			// 基准值
-			int x = array[i];//总是指向当前数组的首元素，将首元素选为基准值
-			
-			while (i < j) {
-				while (i < j && array[j] > x) {//从右向左查找比x小的数
-					j--;
-				}
-				if (i < j) {
-					array[i++] = array[j];//将a[j]的值赋给a[i]
-				}
-				while (i < j && array[i] < x) {//从左向右查找比x大的数
-					i++;
-				}
-				if (i < j) {
-					array[j--] = array[i];//将a[i]的值赋给a[j]
-				}
-			}
-			
-			array[i] = x;//当i >= j时，停止查找和交换，设置a[i] = x
-			
-			//分治策略：递归排序
-			quickSort(array, left, i - 1);
-			quickSort(array, i + 1, right);
-		}
-		
-	}
+    // right可以理解为当前数组的尾指针
+    public void quickSort(int[] array, int left, int right) {
+        int pivotPos;
+        if (left < right) {
+            pivotPos = partition(array, left, right);
+            // 递归排序
+            quickSort(array, left, pivotPos - 1);
+            quickSort(array, pivotPos + 1, right);
+        }
+
+    }
+
+    public int partition(int[] array, int i, int j) {
+        //总是指向当前数组的首元素，将首元素选为基准值
+        int pivot = array[i];
+
+        while (i < j) {
+            //从右向左查找比x小的数
+            while (i < j && array[j] > pivot) {
+                j--;
+            }
+            if (i < j) {
+                //将a[j]的值赋给a[i]
+                array[i++] = array[j];
+            }
+            //从左向右查找比x大的数
+            while (i < j && array[i] < pivot) {
+                i++;
+            }
+            if (i < j) {
+                //将a[i]的值赋给a[j]
+                array[j--] = array[i];
+            }
+        }
+
+        array[i] = pivot;
+        return i;
+    }
 	
 }
